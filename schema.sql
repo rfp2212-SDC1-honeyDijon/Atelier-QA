@@ -1,3 +1,4 @@
+DROP DATABASE questionsandanswers
 CREATE DATABASE questionsandanswers;
 
 \c questionsandanswers;

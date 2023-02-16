@@ -26,6 +26,9 @@ module.exports = {
     ],
     'import/extensions': [
       'off'
+    ],
+    'prefer-destructuring': [
+      'off'
     ]
   }
 };

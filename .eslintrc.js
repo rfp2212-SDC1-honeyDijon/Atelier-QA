@@ -13,6 +13,19 @@ module.exports = {
     'comma-dangle': [
       'error',
       'never'
+    ],
+    'no-console': [
+      'error',
+      {
+        allow: [
+          'error',
+          'info',
+          'clear'
+        ]
+      }
+    ],
+    'import/extensions': [
+      'off'
     ]
   }
 };

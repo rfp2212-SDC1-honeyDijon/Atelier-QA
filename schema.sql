@@ -1,34 +1,46 @@
-DROP DATABASE questionsandanswers
+DROP DATABASE IF EXISTS questionsandanswers;
 CREATE DATABASE questionsandanswers;
 
 \c questionsandanswers;
 
-CREATE TABLE questions {
+-- CREATE TABLES
+CREATE TABLE questions (
   id SERIAL PRIMARY KEY NOT NULL,
   product_id INTEGER,
   body VARCHAR(1005),
-  date_written TIMESTAMP,
+  date_written VARCHAR,
   asker_name VARCHAR(65),
   asker_email VARCHAR(65),
   reported BOOLEAN DEFAULT FALSE,
   helpful INTEGER DEFAULT 0
-};
+);
 
-CREATE TABLE answers {
+CREATE TABLE answers (
   id SERIAL PRIMARY KEY NOT NULL,
   question_id INTEGER,
-  body VARCHAR (1005),
-  date_written TIMESTAMP,
+  body VARCHAR(1005),
+  date_written VARCHAR,
   answerer_name VARCHAR(65),
   answerer_email VARCHAR(65),
   reported BOOLEAN DEFAULT FALSE,
   helpful INTEGER DEFAULT 0,
   FOREIGN KEY (question_id) REFERENCES questions(id)
-};
+);
 
-CREATE TABLE answers_photos {
+CREATE TABLE photos (
   id SERIAL PRIMARY KEY NOT NULL,
   answer_id INTEGER,
-  url TEXT,
+  url VARCHAR(2048),
   FOREIGN KEY (answer_id) REFERENCES answers(id)
-};
+);
+
+
+-- CREATE INDICES
+CREATE INDEX product_id_index ON questions (product_id);
+CREATE INDEX question_id_index ON answers (question_id);
+CREATE INDEX answer_id_index ON photos (answer_id);
+
+-- COPY FOR LOADING
+COPY questions FROM '/Users/aimeekang/HackReactor/SDC/SDC-QA/ETL/transformed_data/cleanQuestions.csv' WITH (FORMAT CSV, HEADER true);
+COPY answers FROM '/Users/aimeekang/HackReactor/SDC/SDC-QA/ETL/transformed_data/cleanAnswers.csv' WITH (FORMAT CSV, HEADER true);
+COPY photos FROM '/Users/aimeekang/HackReactor/SDC/SDC-QA/ETL/transformed_data/cleanAnswersPhotos.csv' WITH (FORMAT CSV, HEADER true);

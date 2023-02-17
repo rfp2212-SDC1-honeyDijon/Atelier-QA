@@ -34,7 +34,7 @@ class CSVCleaner extends Transform {
     chunk.answer_id = onlyAnswerIdNumbers;
 
     chunk = csvStringifier.stringifyRecords([chunk]);
-    console.log('chunk', chunk);
+
     let commaCount = 0;
     let quoteInsertIndex;
 
@@ -48,9 +48,7 @@ class CSVCleaner extends Transform {
     }
 
     let text = chunk.slice(0, quoteInsertIndex) + '"' + chunk.slice(quoteInsertIndex).trim();
-    console.log('text', text);
     let result = text.concat(`"\n`);
-    console.log('result', result);
 
     this.push(result);
 

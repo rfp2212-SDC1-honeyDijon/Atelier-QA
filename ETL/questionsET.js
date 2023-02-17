@@ -28,6 +28,7 @@ class CSVCleaner extends Transform {
     const row = {
       id: Number(chunk.id),
       product_id: Number(chunk.product_id),
+      body: chunk.body,
       date_written: chunk.date_written,
       asker_name: chunk.asker_name,
       asker_email: chunk.asker_email,

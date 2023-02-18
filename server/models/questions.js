@@ -63,23 +63,15 @@ const getQuestions = (prodID, count, offset) => {
   )`
 
   // returns a promise from db.query
-  return db.query(query, [prodID, count, offset])
-    .then((data) => {
-      console.log('data', data.rows[0]);
-      // returns the data from db.query
-      return data;
-    })
-    .catch((err) => console.error('error', err));
+  return db.query(query, [prodID, count, offset]);
+    // .then((data) => {
+    //   console.log('data', data.rows[0]);
+    //   // returns the data from db.query
+    //   return data.rows[0];
+    // })
+    // .catch((err) => console.error('error', err));
 };
 
 module.exports = {
   getQuestions
 };
-
-
-// GET /qa/questions Retrieves a list of questions for a particular product. This list does not include any reported questions.
-
-// json_agg() aggregates to array
-
-// TO DO:
-// how to handle selected page (default set to 1)

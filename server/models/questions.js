@@ -1,7 +1,6 @@
 const db = require('../database/db.js');
 
 const getQuestions = (prodID, count, offset) => {
-  console.log('prodID', prodID);
   const query = `
     WITH q AS (
       SELECT *
@@ -64,12 +63,6 @@ const getQuestions = (prodID, count, offset) => {
 
   // returns a promise from db.query
   return db.query(query, [prodID, count, offset]);
-    // .then((data) => {
-    //   console.log('data', data.rows[0]);
-    //   // returns the data from db.query
-    //   return data.rows[0];
-    // })
-    // .catch((err) => console.error('error', err));
 };
 
 module.exports = {

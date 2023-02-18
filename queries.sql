@@ -12,13 +12,14 @@ a AS (
   SELECT
     id AS answer_id,
     question_id AS ques_id,
-    body,
+    body AS ans_body,
     date_written AS ans_date,
     answerer_name,
     answerer_email,
     reported AS ans_reported,
     helpful AS ans_helpful
   FROM answers
+  WHERE question_id IN (SELECT id FROM q)
   ORDER BY ans_helpful DESC
 ),
 p AS (
@@ -27,6 +28,7 @@ p AS (
     answer_id AS ans_id,
     url
   FROM photos
+  WHERE answer_id IN (SELECT answer_id FROM a)
 ),
 combo AS (
   SELECT *

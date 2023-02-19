@@ -44,3 +44,8 @@ CREATE INDEX answer_id_index ON photos (answer_id);
 COPY questions FROM '/Users/aimeekang/HackReactor/SDC/SDC-QA/ETL/transformed_data/cleanQuestions.csv' WITH (FORMAT CSV, HEADER true);
 COPY answers FROM '/Users/aimeekang/HackReactor/SDC/SDC-QA/ETL/transformed_data/cleanAnswers.csv' WITH (FORMAT CSV, HEADER true);
 COPY photos FROM '/Users/aimeekang/HackReactor/SDC/SDC-QA/ETL/transformed_data/cleanAnswersPhotos.csv' WITH (FORMAT CSV, HEADER true);
+
+
+-- ALTER COLUMN
+-- ALTER TABLE questions ALTER COLUMN date_written TYPE bigint USING date_written::bigint;
+-- ALTER TABLE answers ALTER COLUMN date_written TYPE bigint USING date_written::bigint;

@@ -39,7 +39,7 @@ const getQuestions = (prodID, count, offset) => {
         SELECT json_agg(json_build_object(
           'question_id', q.id,
           'question_body', q.body,
-          'question_date', q.date_written,
+          'question_date', to_timestamp(q.date_written / 1000),
           'asker_name', q.asker_name,
           'question_helpfulness', q.helpful,
           'reported', q.reported,
@@ -48,7 +48,7 @@ const getQuestions = (prodID, count, offset) => {
               a.answer_id, json_build_object(
                 'id', a.answer_id,
                 'body', a.ans_body,
-                'date', a.ans_date,
+                'date', to_timestamp(a.ans_date / 1000),
                 'answerer_name', a.answerer_name,
                 'helpfulness', a.ans_helpful,
                 'photos', (

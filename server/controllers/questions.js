@@ -8,7 +8,7 @@ const getQuestions = (req, res) => {
 
   models.questions.getQuestions(prodID, count, offset)
     .then((result) => {
-      console.log('result', result.rows[0]);
+      // console.log('result', result.rows[0]);
       console.info('Retrieved questions');
       res.status(200).send(result.rows[0].json_build_object);
     })

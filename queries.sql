@@ -58,3 +58,7 @@ SELECT json_build_object(
     FROM q
   )
 );
+
+-- postQuestion (need to fix bigint to timestamp)
+INSERT INTO questions (product_id, body, date_written, asker_name, asker_email, reported, helpful)
+VALUES ()

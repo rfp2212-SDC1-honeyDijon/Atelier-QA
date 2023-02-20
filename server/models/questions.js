@@ -1,6 +1,11 @@
 const db = require('../database/db.js');
 
-const getQuestions = (prodID, count, offset) => {
+const getQuestions = (req) => {
+  const prodID = req.query.product_id;
+  const count = req.query.count || 5;
+  const page = req.query.page || 1;
+  const offset = (page - 1) * count;
+
   const query = `
     WITH q AS (
       SELECT *
@@ -39,7 +44,7 @@ const getQuestions = (prodID, count, offset) => {
         SELECT json_agg(json_build_object(
           'question_id', q.id,
           'question_body', q.body,
-          'question_date', to_timestamp(q.date_written / 1000),
+          'question_date', q.date_written,
           'asker_name', q.asker_name,
           'question_helpfulness', q.helpful,
           'reported', q.reported,
@@ -65,8 +70,19 @@ const getQuestions = (prodID, count, offset) => {
   return db.query(query, [prodID, count, offset]);
 };
 
-const postQuestion = () => {
+const postQuestion = (req) => {
+  const prodID = req.body.product_id;
+  const body = req.body.body;
+  const date = new Date().toISOString(); // "2023-02-20T05:15:49.617Z
+  const name = req.body.name;
+  const email = req.body.email;
 
+  const query = `
+    INSERT INTO questions (product_id, body, date_written, asker_name, asker_email, reported, helpful)
+    VALUES ($1, $2, $3, $4, $5, $6, $7)
+  `;
+
+  return db.query(query, [prodID, body, date, name, email, false, 0]);
 };
 
 const markHelpfulQuestion = () => {

@@ -19,21 +19,21 @@ const postAnswer = (req, res) => {
   models.answers
     .postAnswer()
     .then()
-    .catch();
+    .catch((err) => res.status(500).send(err));
 };
 
 const markHelpfulAnswer = (req, res) => {
   models.answers
     .markHelpfulAnswer()
     .then()
-    .catch();
+    .catch((err) => res.status(500).send(err));
 };
 
 const reportAnswer = (req, res) => {
   models.answers
     .reportAnswer()
     .then()
-    .catch();
+    .catch((err) => res.status(500).send(err));
 };
 
 module.exports = {

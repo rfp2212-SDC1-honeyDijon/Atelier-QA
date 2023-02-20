@@ -1,3 +1,4 @@
+// /qa/questions
 {
   "product_id": "40355",
   "results": [
@@ -94,4 +95,89 @@
           }
       }
   ]
+}
+
+// /qa/questions/:question_id/answers
+{
+    "question": "329054",
+    "page": 1,
+    "count": 5,
+    "results": [
+        {
+            "answer_id": 3073918,
+            "body": "Quidem modi deserunt numquam optio enim quibusdam fugiat quis.",
+            "date": "2021-01-01T00:00:00.000Z",
+            "answerer_name": "Zakary_Beier76",
+            "helpfulness": 22,
+            "photos": [
+                {
+                    "id": 2723916,
+                    "url": "https://images.unsplash.com/photo-1421941027568-40ab08ee5592?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"
+                },
+                {
+                    "id": 2723917,
+                    "url": "https://images.unsplash.com/photo-1544376664-80b17f09d399?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1525&q=80"
+                }
+            ]
+        },
+        {
+            "answer_id": 3073919,
+            "body": "Autem earum porro et nulla quae.",
+            "date": "2020-10-16T00:00:00.000Z",
+            "answerer_name": "Ebony27",
+            "helpfulness": 9,
+            "photos": [
+                {
+                    "id": 2723918,
+                    "url": "https://images.unsplash.com/photo-1544376664-80b17f09d399?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1525&q=80"
+                },
+                {
+                    "id": 2723919,
+                    "url": "https://images.unsplash.com/photo-1507920676663-3b72429774ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80"
+                }
+            ]
+        },
+        {
+            "answer_id": 3073920,
+            "body": "Minus officiis fugiat est.",
+            "date": "2021-06-18T00:00:00.000Z",
+            "answerer_name": "Lynn.Hessel",
+            "helpfulness": 5,
+            "photos": [
+                {
+                    "id": 2723920,
+                    "url": "https://images.unsplash.com/photo-1485646979142-d4abb57a876f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80"
+                },
+                {
+                    "id": 2723921,
+                    "url": "https://images.unsplash.com/photo-1534960680480-ca9853707e10?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2384&q=80"
+                }
+            ]
+        },
+        {
+            "answer_id": 5990498,
+            "body": "Great, thank you!",
+            "date": "2023-02-06T00:00:00.000Z",
+            "answerer_name": "jack543",
+            "helpfulness": 1,
+            "photos": []
+        },
+        {
+            "answer_id": 3073921,
+            "body": "Voluptatem illo praesentium.",
+            "date": "2020-09-11T00:00:00.000Z",
+            "answerer_name": "Triston.Rippin",
+            "helpfulness": 1,
+            "photos": [
+                {
+                    "id": 2723922,
+                    "url": "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                },
+                {
+                    "id": 2723923,
+                    "url": "https://images.unsplash.com/photo-1548133464-29abc661eb5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                }
+            ]
+        }
+    ]
 }

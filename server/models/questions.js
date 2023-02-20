@@ -59,12 +59,27 @@ const getQuestions = (prodID, count, offset) => {
         ))
         FROM q
       )
-  )`
+  )`;
 
   // returns a promise from db.query
   return db.query(query, [prodID, count, offset]);
 };
 
+const postQuestion = () => {
+
+};
+
+const markHelpfulQuestion = () => {
+
+};
+
+const reportQuestion = () => {
+
+};
+
 module.exports = {
-  getQuestions
+  getQuestions,
+  postQuestion,
+  markHelpfulQuestion,
+  reportQuestion
 };

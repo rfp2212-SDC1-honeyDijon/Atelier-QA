@@ -19,15 +19,15 @@ const postQuestion = (req, res) => {
 
 const markHelpfulQuestion = (req, res) => {
   models.questions
-    .markHelpfulQuestion()
-    .then()
+    .markHelpfulQuestion(req)
+    .then(() => res.status(204).send('Marked as helpful'))
     .catch((err) => res.status(500).send(err));
 };
 
 const reportQuestion = (req, res) => {
   models.questions
-    .reportQuestion()
-    .then()
+    .reportQuestion(req)
+    .then(() => res.status(204).send('Question reported'))
     .catch((err) => res.status(500).send(err));
 };
 

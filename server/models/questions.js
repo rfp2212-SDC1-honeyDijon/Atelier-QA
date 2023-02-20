@@ -85,8 +85,16 @@ const postQuestion = (req) => {
   return db.query(query, [prodID, body, date, name, email, false, 0]);
 };
 
-const markHelpfulQuestion = () => {
+const markHelpfulQuestion = (req) => {
+  const quesID = req.params.question_id;
 
+  const query = `
+    UPDATE questions
+    SET helpful = helpful + 1
+    WHERE id = $1
+  `;
+
+  return db.query(query, [quesID]);
 };
 
 const reportQuestion = () => {

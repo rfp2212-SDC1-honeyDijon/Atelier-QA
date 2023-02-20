@@ -97,8 +97,16 @@ const markHelpfulQuestion = (req) => {
   return db.query(query, [quesID]);
 };
 
-const reportQuestion = () => {
+const reportQuestion = (req) => {
+  const quesID = req.params.question_id;
 
+  const query = `
+    UPDATE questions
+    SET reported = TRUE
+    WHERE id = $1
+  `;
+
+  return db.query(query, [quesID]);
 };
 
 module.exports = {

@@ -52,7 +52,7 @@ const getQuestions = (req) => {
               a.answer_id, json_build_object(
                 'id', a.answer_id,
                 'body', a.ans_body,
-                'date', to_timestamp(a.ans_date / 1000),
+                'date', a.ans_date,
                 'answerer_name', a.answerer_name,
                 'helpfulness', a.ans_helpful,
                 'photos', (

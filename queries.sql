@@ -59,3 +59,37 @@ SELECT json_build_object(
   )
 );
 
+-- getAnswers (built from info in answers and photos tables) -- 2 CTE a, p
+
+-- photos: array of objects
+-- results: array of objects
+-- returns a large object with question, page, count, results
+WITH a AS (
+  SELECT *
+  FROM answers
+  WHERE question_id = 3518964 AND reported = FALSE
+  ORDER BY helpful DESC
+  LIMIT 5
+),
+p AS (
+  SELECT
+    id AS photo_id,
+    answer_id,
+    url
+  FROM photos
+  WHERE answer_id IN (SELECT id FROM a)
+)
+SELECT json_build_object(
+  'question', 3518964,
+  'results', (
+    SELECT json_agg(json_build_object(
+      'answer_id', a.id,
+      'body', a.body,
+      'date', a.date_written,
+      'answerer_name', a.answerer_name,
+      'helpfulness', a.helpful
+    ))
+    FROM a
+  )
+
+);

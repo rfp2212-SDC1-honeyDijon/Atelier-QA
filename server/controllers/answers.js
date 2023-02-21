@@ -5,7 +5,7 @@ const getAnswers = (req, res) => {
     .getAnswers(req)
     .then((result) => {
       console.info('Retrieved answers');
-      res.status(200).send(result);
+      res.status(200).send(result.rows[0].json_build_object);
     })
     .catch((err) => res.status(500).send(err));
 };

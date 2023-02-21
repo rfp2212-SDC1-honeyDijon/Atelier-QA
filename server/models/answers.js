@@ -4,8 +4,47 @@ const getAnswers = (req) => {
   const quesID = req.params.question_id;
   const count = req.query.count || 5;
   const page = req.query.page || 1;
-  const offset = (page - 1) * count;
-  const query = ``;
+  const offset = (page - 1) * count; // page in results is offset
+  const query = `
+    WITH a AS (
+      SELECT *
+      FROM answers
+      WHERE question_id = $1 AND reported = FALSE
+      ORDER BY helpful DESC
+      LIMIT $2
+      OFFSET $3
+    ),
+    p AS (
+      SELECT
+        id AS photo_id,
+        answer_id,
+        url
+      FROM photos
+      WHERE answer_id IN (SELECT id FROM a)
+    )
+
+    SELECT json_build_object(
+      'question', 3518964,
+      'page', $3,
+      'count', $2,
+      'results', (
+        SELECT COALESCE (json_agg(json_build_object(
+          'answer_id', a.id,
+          'body', a.body,
+          'date', a.date_written,
+          'answerer_name', a.answerer_name,
+          'helpfulness', a.helpful,
+          'photos', (
+            SELECT COALESCE (json_agg(json_build_object(
+              'id', p.photo_id,
+              'url', p.url
+            )), '[]'::json)
+            FROM p
+          )
+        )), '{}'::json)
+        FROM a
+      )
+    )`;
 
   return db.query(query, [quesID, count, offset]);
 };

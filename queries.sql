@@ -79,17 +79,24 @@ p AS (
   FROM photos
   WHERE answer_id IN (SELECT id FROM a)
 )
+
 SELECT json_build_object(
   'question', 3518964,
   'results', (
-    SELECT json_agg(json_build_object(
+    SELECT COALESCE (json_agg(json_build_object(
       'answer_id', a.id,
       'body', a.body,
       'date', a.date_written,
       'answerer_name', a.answerer_name,
-      'helpfulness', a.helpful
-    ))
+      'helpfulness', a.helpful,
+      'photos', (
+        SELECT COALESCE (json_agg(json_build_object(
+          'id', p.photo_id,
+          'url', p.url
+        )), '[]'::json)
+        FROM p
+      )
+    )), '{}'::json)
     FROM a
   )
-
 );

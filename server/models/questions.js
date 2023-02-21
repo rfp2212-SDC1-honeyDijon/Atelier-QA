@@ -57,13 +57,15 @@ const getQuestions = (req) => {
                 'helpfulness', a.ans_helpful,
                 'photos', (
                   SELECT COALESCE (json_agg(p.url), '[]'::json)
-                    FROM p
+                  FROM p
                 )
-              )), '{}'::json) FROM a)
-        ))
+              )), '{}'::json)
+              FROM a
+            )
+          ))
         FROM q
       )
-  )`;
+    )`;
 
   // returns a promise from db.query
   return db.query(query, [prodID, count, offset]);

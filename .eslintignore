@@ -4,3 +4,4 @@
 **/vendor
 **/*.min.js
 **/ETL
+**k6

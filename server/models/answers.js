@@ -24,8 +24,20 @@ const postAnswer = (req) => {
   `;
   const parameters = [quesID, body, date, name, email, false, 0];
 
-  // if (photos.length > 0) {
-  // };
+  if (photos.length > 0) {
+    const photoParams = parameters.concat([photos]);
+    const photoQuery = `
+      WITH new_ans AS (
+        ${query}
+        RETURNING id
+      )
+
+      INSERT INTO photos (answer_id, url)
+      VALUES ((SELECT id FROM new_ans), UNNEST($8::text[]))
+    `;
+
+    return db.query(photoQuery, photoParams);
+  }
 
   return db.query(query, parameters);
 };

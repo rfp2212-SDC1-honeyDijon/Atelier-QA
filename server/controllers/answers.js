@@ -1,5 +1,4 @@
 const models = require('../models');
-console.log('models', models);
 
 const getAnswers = (req, res) => {
   models.answers
@@ -14,7 +13,7 @@ const getAnswers = (req, res) => {
 const postAnswer = (req, res) => {
   models.answers
     .postAnswer(req)
-    .then((data) => res.status(201).send(data))
+    .then(() => res.status(201).send('Posted answer'))
     .catch((err) => res.status(500).send(err));
 };
 

@@ -5,7 +5,6 @@ const getAnswers = (req) => {
   const count = req.query.count || 5;
   const page = req.query.page || 1;
   const offset = (page - 1) * count;
-
   const query = ``;
 
   return db.query(query, [quesID, count, offset]);
@@ -31,7 +30,6 @@ const postAnswer = (req) => {
         ${query}
         RETURNING id
       )
-
       INSERT INTO photos (answer_id, url)
       VALUES ((SELECT id FROM new_ans), UNNEST($8::text[]))
     `;
@@ -43,7 +41,14 @@ const postAnswer = (req) => {
 };
 
 const markHelpfulAnswer = (req) => {
+  const ansID = req.params.answer_id;
+  const query = `
+    UPDATE answers
+    SET helpful = helpful + 1
+    WHERE id = $1
+  `;
 
+  return db.query(query, [ansID]);
 };
 
 const reportAnswer = (req) => {

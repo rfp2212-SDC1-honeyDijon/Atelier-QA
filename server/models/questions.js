@@ -37,7 +37,6 @@ const getQuestions = (req) => {
       FROM photos
       WHERE answer_id IN (SELECT answer_id FROM a)
     )
-
     SELECT json_build_object(
       'product_id', $1,
       'results', (
@@ -73,10 +72,9 @@ const getQuestions = (req) => {
 const postQuestion = (req) => {
   const prodID = req.body.product_id;
   const body = req.body.body;
-  const date = new Date.toISOString(); // "2023-02-20T05:15:49.617Z
+  const date = new Date().toISOString(); // "2023-02-20T05:15:49.617Z
   const name = req.body.name;
   const email = req.body.email;
-
   const query = `
     INSERT INTO questions (product_id, body, date_written, asker_name, asker_email, reported, helpful)
     VALUES ($1, $2, $3, $4, $5, $6, $7)
@@ -87,7 +85,6 @@ const postQuestion = (req) => {
 
 const markHelpfulQuestion = (req) => {
   const quesID = req.params.question_id;
-
   const query = `
     UPDATE questions
     SET helpful = helpful + 1
@@ -99,7 +96,6 @@ const markHelpfulQuestion = (req) => {
 
 const reportQuestion = (req) => {
   const quesID = req.params.question_id;
-
   const query = `
     UPDATE questions
     SET reported = TRUE

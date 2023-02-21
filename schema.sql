@@ -47,11 +47,11 @@ COPY photos FROM '/Users/aimeekang/HackReactor/SDC/SDC-QA/ETL/transformed_data/c
 
 
 -- ALTER COLUMN
--- ALTER TABLE questions ALTER COLUMN date_written TYPE bigint USING date_written::bigint;
--- ALTER TABLE answers ALTER COLUMN date_written TYPE bigint USING date_written::bigint;
+ALTER TABLE questions ALTER COLUMN date_written TYPE bigint USING date_written::bigint;
+ALTER TABLE answers ALTER COLUMN date_written TYPE bigint USING date_written::bigint;
 
--- ALTER TABLE questions ALTER COLUMN date_written TYPE timestamp USING to_timestamp(date_written / 1000);
--- ALTER TABLE answers ALTER COLUMN date_written TYPE timestamp USING to_timestamp(date_written / 1000);
+ALTER TABLE questions ALTER COLUMN date_written TYPE timestamp USING to_timestamp(date_written / 1000);
+ALTER TABLE answers ALTER COLUMN date_written TYPE timestamp USING to_timestamp(date_written / 1000);
 
 -- RESET PRIMARY KEY SEQUENCE
 SELECT setval('questions_id_seq', (SELECT MAX(id) FROM questions));

@@ -73,7 +73,7 @@ const getQuestions = (req) => {
 const postQuestion = (req) => {
   const prodID = req.body.product_id;
   const body = req.body.body;
-  const date = new Date().toISOString(); // "2023-02-20T05:15:49.617Z
+  const date = new Date.toISOString(); // "2023-02-20T05:15:49.617Z
   const name = req.body.name;
   const email = req.body.email;
 

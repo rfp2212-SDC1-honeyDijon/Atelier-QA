@@ -55,3 +55,4 @@ COPY photos FROM '/Users/aimeekang/HackReactor/SDC/SDC-QA/ETL/transformed_data/c
 
 -- RESET PRIMARY KEY SEQUENCE
 SELECT setval('questions_id_seq', (SELECT MAX(id) FROM questions));
+SELECT setval('answers_id_seq', (SELECT MAX(id) FROM answers));

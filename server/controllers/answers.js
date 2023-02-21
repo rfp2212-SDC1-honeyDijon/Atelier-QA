@@ -1,13 +1,9 @@
 const models = require('../models');
+console.log('models', models);
 
 const getAnswers = (req, res) => {
-  const quesID = req.param.question_id;
-  const count = req.query.count || 5;
-  const page = req.query.page || 1;
-  const offset = (page - 1) * count;
-
   models.answers
-    .getAnswers(quesID, count, offset)
+    .getAnswers(req)
     .then((result) => {
       console.info('Retrieved answers');
       res.status(200).send(result);
@@ -17,22 +13,22 @@ const getAnswers = (req, res) => {
 
 const postAnswer = (req, res) => {
   models.answers
-    .postAnswer()
-    .then()
+    .postAnswer(req)
+    .then((data) => res.status(201).send(data))
     .catch((err) => res.status(500).send(err));
 };
 
 const markHelpfulAnswer = (req, res) => {
   models.answers
-    .markHelpfulAnswer()
-    .then()
+    .markHelpfulAnswer(req)
+    .then(() => res.sendStatus(204))
     .catch((err) => res.status(500).send(err));
 };
 
 const reportAnswer = (req, res) => {
   models.answers
-    .reportAnswer()
-    .then()
+    .reportAnswer(req)
+    .then(() => res.sendStatus(204))
     .catch((err) => res.status(500).send(err));
 };
 

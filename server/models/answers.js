@@ -52,7 +52,14 @@ const markHelpfulAnswer = (req) => {
 };
 
 const reportAnswer = (req) => {
+  const ansID = req.params.answer_id;
+  const query = `
+    UPDATE answers
+    SET reported = TRUE
+    WHERE id = $1
+  `;
 
+  return db.query(query, [ansID]);
 };
 
 module.exports = {

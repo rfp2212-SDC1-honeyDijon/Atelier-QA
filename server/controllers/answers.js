@@ -2,16 +2,16 @@ const models = require('../models');
 const { getCache, setCache } = require('../caching.js');
 
 const getAnswers = async (req, res) => {
-  const cacheKey = await getCache(`answers: ${req.params.question_id}`);
+  const key = `answers: ${req.params.question_id}`;
+  const cachedValue = await getCache(key);
 
-  if (cacheKey) {
-    const cachedData = JSON.parse(cacheKey);
-    res.status(200).json(cachedData);
+  if (cachedValue) {
+    res.status(200).json(cachedValue);
   } else {
     models.answers
       .getAnswers(req)
       .then((result) => {
-        setCache(cacheKey, result.rows[0].json_build_object);
+        setCache(key, result.rows[0].json_build_object);
         res.status(200).send(result.rows[0].json_build_object);
       })
       .catch((err) => res.status(500).send(err));

@@ -11,7 +11,6 @@ const getAnswers = async (req, res) => {
     models.answers
       .getAnswers(req)
       .then((result) => {
-        console.info('Retrieved answers');
         setCache(cacheKey, result.rows[0].json_build_object);
         res.status(200).send(result.rows[0].json_build_object);
       })

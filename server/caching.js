@@ -7,6 +7,9 @@ const redis = new Redis({
   port: process.env.REDIS_PORT
 });
 
+redis.on('ready', () => console.info('Connected to Redis'));
+redis.on('error', (err) => console.error(`Redis connection error: ${err}`));
+
 // Get key data from Redis cache
 async function getCache(key) {
   try {

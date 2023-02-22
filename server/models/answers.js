@@ -24,7 +24,7 @@ const getAnswers = (req) => {
     )
 
     SELECT json_build_object(
-      'question', 3518964,
+      'question', $1,
       'page', $3,
       'count', $2,
       'results', (

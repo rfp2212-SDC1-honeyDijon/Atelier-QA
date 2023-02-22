@@ -14,7 +14,7 @@ redis.on('error', (err) => console.error(`Redis connection error: ${err}`));
 async function getCache(key) {
   try {
     const cacheData = await redis.get(key);
-    return cacheData;
+    return JSON.parse(cacheData);
   } catch (err) {
     console.error(`Error getting key data: ${err}`);
     return null;

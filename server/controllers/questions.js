@@ -1,13 +1,22 @@
 const models = require('../models');
+const { getCache, setCache } = require('../caching.js');
 
-const getQuestions = (req, res) => {
-  models.questions
-    .getQuestions(req)
-    .then((result) => {
-      console.info('Retrieved questions');
-      res.status(200).send(result.rows[0].json_build_object);
-    })
-    .catch((err) => res.status(500).send(err));
+const getQuestions = async (req, res) => {
+  const cacheKey = await getCache(`questions: ${req.query.product_id}`);
+
+  if (cacheKey) {
+    const cachedData = JSON.parse(cacheKey);
+    res.status(200).json(cachedData);
+  } else {
+    models.questions
+      .getQuestions(req)
+      .then((result) => {
+        console.info('Retrieved questions');
+        setCache(cacheKey, result.rows[0].json_build_object);
+        res.status(200).send(result.rows[0].json_build_object);
+      })
+      .catch((err) => res.status(500).send(err));
+  }
 };
 
 const postQuestion = (req, res) => {

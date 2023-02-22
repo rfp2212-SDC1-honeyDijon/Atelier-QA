@@ -12,14 +12,8 @@ export function handleSummary(data) {
 
 export const options = {
   stages: [
-    { duration: '1m', target: 100 },
-    { duration: '1m', target: 250 },
-    { duration: '1m', target: 350 },
     { duration: '1m', target: 500 },
-    { duration: '1m', target: 650 },
-    { duration: '1m', target: 750 },
-    { duration: '1m', target: 1000 },
-    { duration: '3m', target: 0 }
+    { duration: '1m', target: 1000 }
   ],
   thresholds: {
     http_req_failed: [{ threshold: 'rate <= 0.01'}],

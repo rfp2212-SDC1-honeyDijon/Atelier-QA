@@ -14,6 +14,6 @@ pool.on('error', (err) => {
   process.exit(-1);
 });
 
-pool.connect().then(() => console.info('Connected!'));
+pool.connect().then(() => console.info('Connected to Postgres'));
 
 module.exports = pool;

@@ -20,6 +20,6 @@ app.listen(PORT, (err) => {
   if (err) {
     console.error(err);
   } else {
-    console.info(`Server listening at http://${process.env.DB_HOST}:${process.env.PORT}`);
+    console.info(`Server listening at PORT:${process.env.PORT}`);
   }
 });

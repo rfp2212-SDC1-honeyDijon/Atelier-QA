@@ -1,11 +1,11 @@
 const models = require('../models');
 const { getCache, setCache } = require('../caching.js');
 
-const getAnswers = async (req, res) => {
+const getAnswers = (req, res) => {
   const count = req.query.count || 5;
   const page = req.query.page || 1;
   const key = `answers: ${req.params.question_id}${count}${page}`;
-  const cachedValue = await getCache(key);
+  const cachedValue = getCache(key);
 
   if (cachedValue) {
     res.status(200).json(cachedValue);

@@ -22,22 +22,21 @@ export const options = {
   ],
   thresholds: {
     http_req_failed: [{ threshold: 'rate <= 0.01'}],
-    http_req_duration: ['p(99) < 2000'], // 99% of reqs must complete below 150ms
+    http_req_duration: ['p(99) < 2000'], // 99% of reqs must complete below 2s
     checks: ['rate>=0.99']
   },
 };
 
 export default function () {
-  // let id = Math.floor(Math.random() * 1000000) + 1;
   const requests = http.batch([
     ['GET', `${URL}/qa/questions?product_id=${product_id}`],
-    // ['GET', `${URL}/qa/questions/${id}/answers`]
+    ['GET', `${URL}/qa/questions/${id}/answers`]
   ]);
   check(requests[0], {
     'getQuestions status was 200': (res) => res.status === 200
   });
-  // check(requests[1], {
-  //   'getAnswers status was 200': (res) => res.status === 200
-  // })
+  check(requests[1], {
+    'getAnswers status was 200': (res) => res.status === 200
+  })
   sleep(1);
 };

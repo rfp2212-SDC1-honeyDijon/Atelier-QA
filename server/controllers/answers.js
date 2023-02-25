@@ -8,7 +8,7 @@ const getAnswers = async (req, res) => {
   const cachedValue = await getCache(key);
 
   if (cachedValue) {
-    res.status(200).json(cachedValue);
+    res.status(200).send({ ...cachedValue, source: 'redisCache' });
   } else {
     models.answers
       .getAnswers(req)

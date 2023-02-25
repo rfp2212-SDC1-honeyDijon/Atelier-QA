@@ -14,7 +14,7 @@ const getQuestions = async (req, res) => {
     models.questions
       .getQuestions(req)
       .then((result) => {
-        setCache(key, result.rows[0].json_build_object);
+        // setCache(key, result.rows[0].json_build_object);
         res.status(200).send(result.rows[0].json_build_object);
       })
       .catch((err) => res.status(500).send(err));

@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-// const db = require('./database/db.js');
 
 const app = express();
 
@@ -15,7 +14,7 @@ app.use(express.json());
 app.use('/', router);
 
 app.get(`/${process.env.LOADER_IO}`, (req, res) => (
-  res.send(process.env.LOADER_IO)
+  res.status(200).send(process.env.LOADER_IO)
 ));
 
 const PORT = process.env.PORT;

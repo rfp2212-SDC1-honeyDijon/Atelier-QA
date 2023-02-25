@@ -13,20 +13,19 @@ const getQuestions = async (req, res) => {
   const page = req.query.page || 1;
   const key = `questions: ${req.query.product_id}${count}${page}`;
   // const cachedValue = getCache(key);
-  let cachedValue = await redis.get(key);
-  // cachedValue = JSON.parse(cachedValue);
-  if (cachedValue) {
-    console.log('i am being cached');
-    res.status(200).send(JSON.parse(cachedValue));
-  } else {
-    models.questions
-      .getQuestions(req)
-      .then((result) => {
-        redis.setex(key, 60, result.rows[0].json_build_object);
-        res.status(200).send(result.rows[0].json_build_object);
-      })
-      .catch((err) => res.status(500).send(err));
+  let cache = await redis.get(key);
+  if (cache) {
+    cache = JSON.parse(cache);
+    return res.status(200).send(cache);
   }
+
+  return models.questions
+    .getQuestions(req)
+    .then((result) => {
+      redis.setex(key, 60, result.rows[0].json_build_object);
+      res.status(200).send(result.rows[0].json_build_object);
+    })
+    .catch((err) => res.status(500).send(err));
 };
 
 const postQuestion = (req, res) => {

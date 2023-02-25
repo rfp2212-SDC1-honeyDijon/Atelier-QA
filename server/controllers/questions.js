@@ -8,24 +8,39 @@ const redis = new Redis({
   port: process.env.REDIS_PORT
 });
 
-const getQuestions = async (req, res) => {
+redis.on('ready', () => console.info('Connected to Redis'));
+redis.on('error', (err) => console.error(`Redis connection error: ${err}`));
+
+const getQuestions = (req, res) => {
   const count = req.query.count || 5;
   const page = req.query.page || 1;
-  const key = `questions: ${req.query.product_id}${count}${page}`;
-  // const cachedValue = getCache(key);
-  let cache = await redis.get(key);
-  if (cache) {
-    cache = JSON.parse(cache);
-    return res.status(200).send(cache);
-  }
+  const key = `${req.query.product_id}${count}${page}`;
+  const beforeRedis = new Date().getTime();
+  let flag = 0;
 
-  return models.questions
-    .getQuestions(req)
-    .then((result) => {
-      redis.setex(key, 60, result.rows[0].json_build_object);
-      res.status(200).send(result.rows[0].json_build_object);
+  redis.get(key)
+    .then((cachedValue) => {
+      const afterRedis = new Date().getTime();
+      flag = 1;
+      console.log(`redis time: ${afterRedis - beforeRedis}, flag: ${flag}`);
+      // console.log('cachedValue', cachedValue);
+      if (cachedValue) {
+        let data = JSON.parse(cachedValue);
+        res.status(200).send(data);
+      } else {
+        const beforeDB = new Date().getTime();
+        models.questions
+          .getQuestions(req)
+          .then((result) => {
+            const afterDB = new Date().getTime();
+            console.log(`db time: ${afterDB - beforeDB}`);
+            res.status(200).send(result.rows[0].json_build_object);
+            redis.set(key, JSON.stringify(result.rows[0].json_build_object), 'EX', process.env.REDIS_TTL);
+          })
+          .catch((err) => res.status(500).send(err));
+      }
     })
-    .catch((err) => res.status(500).send(err));
+    .catch((err) => console.error(err));
 };
 
 const postQuestion = (req, res) => {

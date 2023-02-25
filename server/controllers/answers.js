@@ -1,5 +1,5 @@
 const models = require('../models');
-const { getCache, setCache } = require('../caching.js');
+// const { getCache, setCache } = require('../caching.js');
 
 const getAnswers = async (req, res) => {
   const count = req.query.count || 5;

@@ -1,24 +1,32 @@
+require('dotenv').config();
+const Redis = require('ioredis');
 const models = require('../models');
 // const { getCache, setCache } = require('../caching.js');
 
-const getQuestions = async (req, res) => {
-  // const count = req.query.count || 5;
-  // const page = req.query.page || 1;
-  // const key = `questions: ${req.query.product_id}${count}${page}`;
-  // const cachedValue = await getCache(key);
+const redis = new Redis({
+  host: process.env.REDIS_HOST,
+  port: process.env.REDIS_PORT
+});
 
-  // if (cachedValue) {
-  //   console.log('i am being cached');
-  //   res.status(200).send({ ...cachedValue, source: 'redisCache' });
-  // } else {
+const getQuestions = async (req, res) => {
+  const count = req.query.count || 5;
+  const page = req.query.page || 1;
+  const key = `questions: ${req.query.product_id}${count}${page}`;
+  // const cachedValue = getCache(key);
+  let cachedValue = await redis.get(key);
+  cachedValue = JSON.parse(cachedValue);
+  if (cachedValue) {
+    console.log('i am being cached');
+    res.status(200).send({ ...cachedValue, source: 'redisCache' });
+  } else {
     models.questions
       .getQuestions(req)
       .then((result) => {
-        // setCache(key, result.rows[0].json_build_object);
+        redis.setex(key, 60, result.rows[0].json_build_object);
         res.status(200).send(result.rows[0].json_build_object);
       })
       .catch((err) => res.status(500).send(err));
-  // }
+  }
 };
 
 const postQuestion = (req, res) => {

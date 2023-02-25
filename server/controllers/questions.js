@@ -14,10 +14,10 @@ const getQuestions = async (req, res) => {
   const key = `questions: ${req.query.product_id}${count}${page}`;
   // const cachedValue = getCache(key);
   let cachedValue = await redis.get(key);
-  cachedValue = JSON.parse(cachedValue);
+  // cachedValue = JSON.parse(cachedValue);
   if (cachedValue) {
     console.log('i am being cached');
-    res.status(200).send({ ...cachedValue, source: 'redisCache' });
+    res.status(200).send(JSON.parse(cachedValue));
   } else {
     models.questions
       .getQuestions(req)

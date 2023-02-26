@@ -1,18 +1,16 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
-// import { htmlReport } from 'https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js';
 
-const last10Percent = Math.floor(1000011 * 0.1);
-const product_id = Math.floor(Math.random() * last10Percent) + (1000011 - last10Percent);
-
+const data = {
+  totalProdIDs: 1000000,
+  totalQuesIDs: 3500000,
+  last10product: Math.floor(1000011 * 0.1),
+  last10question: Math.floor(3500000 * 0.1)
+}
+const prodID = Math.floor(Math.random() * data.last10product) + (data.totalProdIDs - data.last10product);
+const quesID = Math.floor(Math.random() * data.last10question) + (data.totalQuesIDs - data.last10question);
 
 const URL = `http://localhost:3001`;
-
-// export function handleSummary(data) {
-//   return {
-//     'summary.html': htmlReport(data)
-//   }
-// };
 
 export const options = {
   stages: [
@@ -21,16 +19,16 @@ export const options = {
     { duration: '1m', target: 0 }
   ],
   thresholds: {
-    http_req_failed: [{ threshold: 'rate <= 0.01'}],
-    http_req_duration: ['p(99) < 2000'], // 99% of reqs must complete below 2s
+    http_req_failed: [{ threshold: 'rate <= 0.01'}], // error rate < 1%
+    http_req_duration: ['p(99) < 2000'], // 99% of reqs must complete below 2ss
     checks: ['rate>=0.99']
   },
 };
 
 export default function () {
   const requests = http.batch([
-    ['GET', `${URL}/qa/questions?product_id=${product_id}`],
-    ['GET', `${URL}/qa/questions/${id}/answers`]
+    ['GET', `${URL}/qa/questions?product_id=${prodID}`],
+    ['GET', `${URL}/qa/questions/${quesID}/answers`]
   ]);
   check(requests[0], {
     'getQuestions status was 200': (res) => res.status === 200

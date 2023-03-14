@@ -1,5 +1,5 @@
 # Questions and Answers API Service
-Redesign of a back end system to meet large traffic demands and retain latency goals.
+Redesign of a back end system for an e-commerce web application.
 
 # Tech Stack:<br>
 <a href="">![-Node](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)</a>

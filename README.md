@@ -1,13 +1,6 @@
 # Atelier Product Q&A API Service
 Redesign and optimization of a backend system for an e-commerce web application.
 
-## Performance
-| Metric | Goal | Achieved |
-| --- | --- | --- |
-| RPS | 1000 | 1000 for questions, 1500 for answers |
-| Latency | <1s | 19ms for questions, 12ms for answers |
-| Error rate | <1% | <1% |
-
 ## Tech Stack <br>
 <div align='left'>
 <img src='https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white' />
@@ -18,6 +11,13 @@ Redesign and optimization of a backend system for an e-commerce web application.
 <img src='https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white' />
 <img src='https://img.shields.io/badge/Postman-FF6C37.svg?style=for-the-badge&logo=Postman&logoColor=white' />
 </div>
+
+## Performance
+| Metric | Goal | Achieved |
+| --- | --- | --- |
+| RPS | 1000 | 1000 for questions, 1500 for answers |
+| Latency | <1s | 19ms for questions, 12ms for answers |
+| Error rate | <1% | <1% |
 
 ## API Endpoints <br>
 

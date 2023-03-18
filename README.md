@@ -13,11 +13,12 @@ Redesign and optimization of a backend system for an e-commerce web application.
 </div>
 
 ## API Endpoints <br>
-Questions:<br>
-  - <code>/qa/questions</code> <br>
-  - <code>/qa/questions/:question_id/helpful</code> <br>
-  - <code>/qa/questions/:question_id/report</code> <br>
-Answers: <br>
-  - <code>/qa/questions/:question_id/answers</code> <br>
-  - <code>/qa/answers/:answer_id/helpful</code> <br>
-  - <code>/qa/answers/:answer_id/report</ code> <br>
+### Questions
+**GET / POST** `/qa/questions`
+**PUT** `/qa/questions/:question_id/helpful`
+**PUT** `/qa/questions/:question_id/report`
+
+### Answers
+**GET / POST** `/qa/questions/:question_id/answers`
+**PUT** `/qa/answers/:answer_id/helpful`
+**PUT** `/qa/answers/:answer_id/report`

@@ -35,14 +35,15 @@ Redesign and optimization of a backend system for an e-commerce web application.
 | Latency | <1s | 19ms for questions, 12ms for answers |
 | Error rate | <1% | <1% for both questions and answers |
 
-**Stress tested with loader.io, with bias on records within last 10% of dataset**
-GET questions `/qa/questions`
+**Stress tested with loader.io, with bias on records within last 10% of dataset** <br>
+GET questions `/qa/questions`<br>
 
 
 
-GET answers `/qa/questions/:question_id/answers`
+GET answers `/qa/questions/:question_id/answers`<br>
+<div align='left'>
 <img src='https://user-images.githubusercontent.com/112139070/226143981-39c5515d-ea44-42db-99e2-c79f55c74237.png' width=50% />
-
+</div>
 
 ## Optimizations <br>
 **Server optimizations** <br>

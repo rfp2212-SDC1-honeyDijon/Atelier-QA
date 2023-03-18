@@ -15,13 +15,13 @@ Redesign and optimization of a backend system for an e-commerce web application.
 ## API Endpoints <br>
 
 ### Questions <br>
-**GET** `/qa/questions` retrieves a list of (non-reported) questions for a given product ID<br>
-**POST** `/qa/questions` adds a quesiton for a given product ID<br>
+**GET** `/qa/questions` retrieves a list of (non-reported) questions for a given product<br>
+**POST** `/qa/questions` adds a question for a given product<br>
 **PUT** `/qa/questions/:question_id/helpful` updates a question to show it was found helpful<br>
 **PUT** `/qa/questions/:question_id/report` updates a question to show it was reported<br>
 
 ### Answers
-**GET** `/qa/questions/:question_id/answers` <br>
-**POST** `/qa/questions/:question_id/answers` <br>
-**PUT** `/qa/answers/:answer_id/helpful` <br>
-**PUT** `/qa/answers/:answer_id/report` <br>
+**GET** `/qa/questions/:question_id/answers` retrieves a list of (non-reported) answers for a given question<<br>
+**POST** `/qa/questions/:question_id/answers` adds an answer for a given question<br>
+**PUT** `/qa/answers/:answer_id/helpful` updates an answer to show it was found helpful<br>
+**PUT** `/qa/answers/:answer_id/report` updates an answer to show it was reported<br>

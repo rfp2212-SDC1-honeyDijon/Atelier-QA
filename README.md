@@ -39,9 +39,8 @@ Redesign and optimization of a backend system for an e-commerce web application.
 GET questions `/qa/questions`<br>
 
 
-
-GET answers `/qa/questions/:question_id/answers`<br>
 <div align='left'>
+GET answers `/qa/questions/:question_id/answers`<br>
 <img src='https://user-images.githubusercontent.com/112139070/226143981-39c5515d-ea44-42db-99e2-c79f55c74237.png' width=50% />
 </div>
 

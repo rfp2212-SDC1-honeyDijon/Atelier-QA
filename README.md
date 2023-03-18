@@ -17,7 +17,7 @@ Redesign and optimization of a backend system for an e-commerce web application.
 | --- | --- | --- |
 | RPS | 1000 | 1000 for questions, 1500 for answers |
 | Latency | <1s | 19ms for questions, 12ms for answers |
-| Error rate | <1% | <1% |
+| Error rate | <1% | <1% for both questions and answers |
 
 ## API Endpoints <br>
 

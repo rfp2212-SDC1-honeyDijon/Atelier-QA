@@ -1,7 +1,8 @@
-# Ateliier Product Q&A API Service
-Redesign of a back end system for an e-commerce web application.
+# Atelier Product Q&A API Service
+Redesign and optimization of a backend system for an e-commerce web application.
 
-# Tech Stack<br>
+## Tech Stack<br>
+<img src='https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white' />
 <a href="">![-Node](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)</a>
 <a href="">![-Express](https://img.shields.io/badge/Express-000000.svg?style=for-the-badge&logo=Express&logoColor=white)</a>
 <a href="">![-Postgresql](https://img.shields.io/badge/PostgreSQL-4169E1.svg?style=for-the-badge&logo=PostgreSQL&logoColor=white)</a>

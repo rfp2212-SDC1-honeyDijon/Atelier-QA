@@ -1,6 +1,14 @@
 # Atelier Product Q&A API Service
-Redesign and optimization of a backend system for an e-commerce web application. <br>
-<p>
+Redesign and optimization of a backend system for an e-commerce web application.
+
+## Performance
+| Metric | Goal | Achieved |
+| --- | --- | --- |
+| RPS | 1000 | 1000 for questions, 1500 for answers |
+| Latency | <1s | 19ms for questions, 12ms for answers |
+| Error rate | <1% | <1% |
+
+
 **Performance goals**
 - 1000 RPS
 - Latency <1s

@@ -12,7 +12,7 @@ Redesign and optimization of a backend system for an e-commerce web application.
 <img src='https://img.shields.io/badge/Postman-FF6C37.svg?style=for-the-badge&logo=Postman&logoColor=white' />
 </div>
 
-## Performance
+## Performance Summary
 | Metric | Goal | Achieved |
 | --- | --- | --- |
 | RPS | 1000 | 1000 for questions, 1500 for answers |

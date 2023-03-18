@@ -34,3 +34,14 @@ Redesign and optimization of a backend system for an e-commerce web application.
 **POST** `/qa/questions/:question_id/answers` adds an answer for a given question<br>
 **PUT** `/qa/answers/:answer_id/helpful` updates an answer to show it was found helpful<br>
 **PUT** `/qa/answers/:answer_id/report` updates an answer to show it was reported<br>
+
+## Optimizations <br>
+**Server optimizations** <br>
+- Horizontal scaling with 1 load balancer and 2 server instances (total of 3 AWS EC2 T2 micro instances)
+- Load balancer configurations: `keepalive_requests` and Nginx caching
+
+
+**Other optimizations** <br>
+- Database optimizations with indices (query time <50ms)
+- Server optimizations with Redis caching
+

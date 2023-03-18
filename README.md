@@ -1,8 +1,7 @@
 # Atelier Product Q&A API Service
 Redesign and optimization of a backend system for an e-commerce web application.
 
-## Tech Stack
-<br>
+## Tech Stack <br>
 <div align='left'>
 <img src='https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white' />
 <img src='https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white' />
@@ -13,14 +12,12 @@ Redesign and optimization of a backend system for an e-commerce web application.
 <img src='https://img.shields.io/badge/Postman-FF6C37.svg?style=for-the-badge&logo=Postman&logoColor=white' />
 </div>
 
-## API Endpoints 
-<br>
-Questions:
-  - <code>/qa/questions</code>
-  - <code>/qa/questions/:question_id/helpful</code>
-  - <code>/qa/questions/:question_id/report</code>
-<br>
-Answers: 
-  - <code>/qa/questions/:question_id/answers</code>
-  - <code>/qa/answers/:answer_id/helpful</code>
-  - <code>/qa/answers/:answer_id/report</ code>
+## API Endpoints <br>
+Questions:<br>
+  - <code>/qa/questions</code> <br>
+  - <code>/qa/questions/:question_id/helpful</code> <br>
+  - <code>/qa/questions/:question_id/report</code> <br>
+Answers: <br>
+  - <code>/qa/questions/:question_id/answers</code> <br>
+  - <code>/qa/answers/:answer_id/helpful</code> <br>
+  - <code>/qa/answers/:answer_id/report</ code> <br>

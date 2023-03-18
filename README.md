@@ -8,17 +8,6 @@ Redesign and optimization of a backend system for an e-commerce web application.
 | Latency | <1s | 19ms for questions, 12ms for answers |
 | Error rate | <1% | <1% |
 
-
-**Performance goals**
-- 1000 RPS
-- Latency <1s
-- Error rate <1%
-
-**Performance metrics achieved**
-- 1000 RPS for questions endpoints, 1100 RPS for answers endpoints
-- Latency 19ms
-- Error rate <1%
-
 ## Tech Stack <br>
 <div align='left'>
 <img src='https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white' />

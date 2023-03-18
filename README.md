@@ -41,7 +41,7 @@ GET questions `/qa/questions`
 
 
 GET answers `/qa/questions/:question_id/answers`
-<img src='https://user-images.githubusercontent.com/112139070/226143981-39c5515d-ea44-42db-99e2-c79f55c74237.png' />
+<img src='https://user-images.githubusercontent.com/112139070/226143981-39c5515d-ea44-42db-99e2-c79f55c74237.png' width=50% />
 
 
 ## Optimizations <br>

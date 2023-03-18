@@ -40,7 +40,7 @@ GET questions `/qa/questions`<br>
 
 
 <div align='left'>
-  GET answers <code>/qa/questions/:question_id/answers`</code><br>
+  GET answers <code>/qa/questions/:question_id/answers</code><br>
 <img src='https://user-images.githubusercontent.com/112139070/226143981-39c5515d-ea44-42db-99e2-c79f55c74237.png' width=50% />
 </div>
 

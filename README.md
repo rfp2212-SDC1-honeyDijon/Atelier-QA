@@ -1,4 +1,4 @@
-# Questions and Answers API Service
+# Ateliier Product Q&A API Service
 Redesign of a back end system for an e-commerce web application.
 
 # Tech Stack<br>

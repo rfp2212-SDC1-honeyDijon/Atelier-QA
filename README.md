@@ -1,5 +1,5 @@
 # Atelier Product Q&A API Service
-Redesign and optimization of a backend system for an e-commerce web application.
+Redesign and optimization of a backend system for an e-commerce web application. Responsible for the Product Q&A microservice.
 
 ## Tech Stack <br>
 <div align='left'>
@@ -14,13 +14,6 @@ Redesign and optimization of a backend system for an e-commerce web application.
 <img src='https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white' />
 </div>
 
-## Performance Summary
-| Metric | Goal | Achieved |
-| --- | --- | --- |
-| RPS | 1000 | 1000 for questions, 1500 for answers |
-| Latency | <1s | 19ms for questions, 12ms for answers |
-| Error rate | <1% | <1% for both questions and answers |
-
 ## API Endpoints <br>
 
 ### Questions <br>
@@ -34,6 +27,22 @@ Redesign and optimization of a backend system for an e-commerce web application.
 **POST** `/qa/questions/:question_id/answers` adds an answer for a given question<br>
 **PUT** `/qa/answers/:answer_id/helpful` updates an answer to show it was found helpful<br>
 **PUT** `/qa/answers/:answer_id/report` updates an answer to show it was reported<br>
+
+## Performance Summary & Stress Testing
+| Metric | Goal | Achieved |
+| --- | --- | --- |
+| RPS | 1000 | 1000 for questions, 1500 for answers |
+| Latency | <1s | 19ms for questions, 12ms for answers |
+| Error rate | <1% | <1% for both questions and answers |
+
+**Stress tested with loader.io, with bias on records within last 10% of dataset**
+GET questions `/qa/questions`
+
+
+
+GET answers `/qa/questions/:question_id/answers`
+<img src='https://user-images.githubusercontent.com/112139070/226143981-39c5515d-ea44-42db-99e2-c79f55c74237.png' />
+
 
 ## Optimizations <br>
 **Server optimizations** <br>

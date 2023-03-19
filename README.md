@@ -1,6 +1,8 @@
 # Atelier Product Q&A API Service
 Redesign and optimization of a backend system for an e-commerce web application. Responsible for the Product Q&A microservice.
 
+<br/>
+
 ## Tech Stack <br>
 <div align='left'>
 <img src='https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white' />
@@ -13,6 +15,8 @@ Redesign and optimization of a backend system for an e-commerce web application.
 <img src='https://img.shields.io/badge/Amazon%20AWS-232F3E.svg?style=for-the-badge&logo=Amazon-AWS&logoColor=white' />
 <img src='https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white' />
 </div>
+
+<br/>
 
 ## API Endpoints <br>
 
@@ -28,13 +32,15 @@ Redesign and optimization of a backend system for an e-commerce web application.
 **PUT** `/qa/answers/:answer_id/helpful` updates an answer to show it was found helpful<br>
 **PUT** `/qa/answers/:answer_id/report` updates an answer to show it was reported<br>
 
+<br/>
+
 ## Performance Summary & Stress Testing
 | Metric | Goal | Achieved |
 | --- | --- | --- |
 | RPS | 1000 | 1000 for questions, 1500 for answers |
 | Latency | <1s | 26ms for questions, 12ms for answers |
 | Error rate | <1% | <1% for both questions and answers |
-
+<br/>
 **Stress tested with loader.io, with bias on records within last 10% of dataset** <br>
 <div align='left'>
 GET questions <code>/qa/questions</code><br>
@@ -45,6 +51,7 @@ GET questions <code>/qa/questions</code><br>
 GET answers <code>/qa/questions/:question_id/answers</code><br>
 <img src='https://user-images.githubusercontent.com/112139070/226143981-39c5515d-ea44-42db-99e2-c79f55c74237.png' width=60% />
 </div>
+<br/> 
 
 ## Optimizations <br>
 **Server optimizations** <br>

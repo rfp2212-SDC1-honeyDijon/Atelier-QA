@@ -28,7 +28,7 @@
 **PUT** `/qa/questions/:question_id/report` updates a question to show it was reported<br>
 
 ### Answers
-**GET** `/qa/questions/:question_id/answers` retrieves a list of (non-reported) answers for a given question<<br>
+**GET** `/qa/questions/:question_id/answers` retrieves a list of (non-reported) answers for a given question<br>
 **POST** `/qa/questions/:question_id/answers` adds an answer for a given question<br>
 **PUT** `/qa/answers/:answer_id/helpful` updates an answer to show it was found helpful<br>
 **PUT** `/qa/answers/:answer_id/report` updates an answer to show it was reported<br>

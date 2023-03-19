@@ -1,5 +1,5 @@
 # Atelier Product Q&A API Service
-- Redesign and optimization of a monolithic backend system to a set microservices for an e-commerce web application. 
+- Redesign and optimization of a monolithic backend system to a set of microservices for an e-commerce web application. 
 - Responsible for the Product Q&A microservice that supports the frontend Questions & Answers module that allows users to view and search questions, ask questions, answer questions, and provide feedback on questions and answers for a given product.
 
 <br/>
